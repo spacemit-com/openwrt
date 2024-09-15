@@ -249,13 +249,6 @@
 	status = "okay";
 };
 
-&i2c1 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_i2c1>;
-	spacemit,i2c-fast-mode;
-	status = "okay";
-};
-
 &i2c2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_i2c2_0>;
@@ -390,6 +383,10 @@
 				regulator-max-microvolt = <3300000>;
 				regulator-ramp-delay = <5000>;
 				regulator-always-on;
+				regulator-state-mem {
+					regulator-off-in-suspend;
+					regulator-suspend-microvolt = <3300000>;
+				};
 			};
 
 			dcdc_5: DCDC_REG5 {
@@ -414,24 +411,40 @@
 				regulator-min-microvolt = <500000>;
 				regulator-max-microvolt = <3400000>;
 				regulator-boot-on;
+				regulator-state-mem {
+					regulator-off-in-suspend;
+					regulator-suspend-microvolt = <500000>;
+				};
 			};
 
 			ldo_2: LDO_REG2 {
 				regulator-name = "ldo2";
 				regulator-min-microvolt = <500000>;
 				regulator-max-microvolt = <3400000>;
+				regulator-state-mem {
+					regulator-off-in-suspend;
+					regulator-suspend-microvolt = <500000>;
+				};
 			};
 
 			ldo_3: LDO_REG3 {
 				regulator-name = "ldo3";
 				regulator-min-microvolt = <500000>;
 				regulator-max-microvolt = <3400000>;
+				regulator-state-mem {
+					regulator-off-in-suspend;
+					regulator-suspend-microvolt = <500000>;
+				};
 			};
 
 			ldo_4: LDO_REG4 {
 				regulator-name = "ldo4";
 				regulator-min-microvolt = <500000>;
 				regulator-max-microvolt = <3400000>;
+				regulator-state-mem {
+					regulator-off-in-suspend;
+					regulator-suspend-microvolt = <500000>;
+				};
 			};
 
 			/* dldo */
@@ -440,18 +453,30 @@
 				regulator-min-microvolt = <500000>;
 				regulator-max-microvolt = <3400000>;
 				regulator-boot-on;
+				regulator-state-mem {
+					regulator-off-in-suspend;
+					regulator-suspend-microvolt = <500000>;
+				};
 			};
 
 			ldo_6: LDO_REG6 {
 				regulator-name = "ldo6";
 				regulator-min-microvolt = <500000>;
 				regulator-max-microvolt = <3400000>;
+				regulator-state-mem {
+					regulator-off-in-suspend;
+					regulator-suspend-microvolt = <500000>;
+				};
 			};
 
 			ldo_7: LDO_REG7 {
 				regulator-name = "ldo7";
 				regulator-min-microvolt = <500000>;
 				regulator-max-microvolt = <3400000>;
+				regulator-state-mem {
+					regulator-off-in-suspend;
+					regulator-suspend-microvolt = <500000>;
+				};
 			};
 
 			ldo_8: LDO_REG8 {
@@ -490,6 +515,14 @@
 			gpio-controller;
 			#gpio-cells = <2>;
 			spacemit,npins = <6>;
+/**
+ *			led_pins: led-pins {
+ *				pins = "PIN3";
+ *				function = "sleep";
+ *				bias-disable = <0>;
+ *				drive-open-drain = <0x1>;
+ *			};
+ */
 		};
 
 		pwr_key: key {
@@ -835,6 +868,7 @@
 &pcie2_rc {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pcie2_4>;
+	num-lanes = <1>;
 	status = "okay";
 };
 
@@ -927,6 +961,7 @@
 	status = "disabled";
 };
 &csiphy2 {
+	spacemit,bifmode-enable;
 
 	status = "okay";
 };

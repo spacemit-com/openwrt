@@ -15,10 +15,10 @@ LOCAL_SOURCE_DIR=$(TOPDIR)/../bsp-src/opensbi
 else
 PKG_NAME:=opensbi
 PKG_RELEASE:=1
-PKG_VERSION:=v2.0
-PKG_SOURCE_VERSION:=rc3
+PKG_VERSION:=1.3
+PKG_SOURCE_VERSION:=v2.0rc5
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)$(PKG_SOURCE_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
 PKG_SOURCE_URL:=https://archive.spacemit.com/openwrt/dl/
 PKG_HASH:=skip
 endif
